@@ -11,21 +11,23 @@ export default function PropertyList() {
     async function makeRequest() {
       const res = await fetch(url);
       const data = await res.json();
-      // console.log(data);
       setData(data);
     }
     makeRequest();
   }, []);
 
   return (
-    <>
-      {data.map((property) => (
-        <PropertyCard
-          key={property.id}
-          name={property.name}
-          type={property.type}
-        />
-      ))}
-    </>
+    <div className="container">
+      <div className="row">
+        {data.map((property) => (
+          <PropertyCard
+            key={property.id}
+            name={property.name}
+            type={property.type}
+            location={property.location}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
